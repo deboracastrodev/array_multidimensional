@@ -1,7 +1,7 @@
 <?php
 
 //Insira o caminho para seu arquivo txt com entradas válidas e em linhas.
-$entrada_linhas=file('/caminho_completo/nome_arquivo.txt');
+$entrada_linhas=file('teste.txt');
 
 if (!$entrada_linhas || count($entrada_linhas) < 3) {
   echo "Arquivo inválido.";
