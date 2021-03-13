@@ -36,20 +36,18 @@ function calculaResulado(array $entrada) {
 * @param int $matriz_tamanho
 * @return string
 */
-function retornaAcumulo(array $matriz, int $matriz_tamanho) {
+function retornaAcumulo(array $matriz, int $matriz_tamanho): void {
   $qtde_acumulo_total = 0;
-  $acumulo_temporario = 0;
-  $preenchimento_incial = false;
 
   for ($row = 0; $row < (int)$matriz_tamanho; $row++) {
     $acumulo_temporario=0;
-    $preenchimento_incial=false;
+    $preenchimento_inicial=false;
     for ($col = 0; $col < (int)$matriz_tamanho; $col++) {
-      if ($matriz[$row][$col] === '*' && !$preenchimento_incial){
-        $preenchimento_incial = true;
-      }elseif($preenchimento_incial && $matriz[$row][$col] === '-'){
+      if ($matriz[$row][$col] === '*' && !$preenchimento_inicial){
+        $preenchimento_inicial = true;
+      }elseif($preenchimento_inicial && $matriz[$row][$col] === '-'){
         $acumulo_temporario += 1;
-      }elseif($preenchimento_incial && $matriz[$row][$col] === '*' && $acumulo_temporario != 0){
+      }elseif($preenchimento_inicial && $matriz[$row][$col] === '*' && $acumulo_temporario != 0){
         $qtde_acumulo_total +=$acumulo_temporario;
         $acumulo_temporario=0;
       }
@@ -62,9 +60,9 @@ function retornaAcumulo(array $matriz, int $matriz_tamanho) {
 /*
 * Recebe uma entrada, caso seja válida, preenche a matriz de acordo com os parâmetros informados
 * @param array['string', 'string'] $entrada
-* @return $matriz[][]
+* @return string || $matriz[][]
 */
-function preencheMatriz(array $entrada) {
+function preencheMatriz(array $entrada): array {
   if (count($entrada) != 2){
     echo "Arquivo com uma ou mais entradas inválidas";
     exit;
