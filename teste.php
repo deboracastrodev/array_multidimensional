@@ -15,6 +15,11 @@ for ($i = 1; $i <= (int)$qtde_entradas; $i++ ) {
   $posicao +=2;
 }
 
+/*
+* Recebe a entrada já filtrada, caso seja válida faz o cálculo e retorna o resultado final.
+* @param array['string', 'string'] $entrada
+* @return string
+*/
 function calculaResulado(array $entrada) {
   if (count($entrada) != 2){
     echo "Arquivo com uma ou mais entradas inválidas";
@@ -25,6 +30,12 @@ function calculaResulado(array $entrada) {
   return retornaAcumulo($matriz, (int)$entrada[0]);
 }
 
+/*
+* Recebe a matriz montada de acordo com as entradas informadas e cálcula capacidade de acúmulo
+* @param array['string', 'string'] $matriz
+* @param int $matriz_tamanho
+* @return string
+*/
 function retornaAcumulo(array $matriz, int $matriz_tamanho) {
   $qtde_acumulo_total = 0;
   $acumulo_temporario = 0;
@@ -48,7 +59,17 @@ function retornaAcumulo(array $matriz, int $matriz_tamanho) {
   echo $qtde_acumulo_total."\n";
 }
 
+/*
+* Recebe uma entrada, caso seja válida, preenche a matriz de acordo com os parâmetros informados
+* @param array['string', 'string'] $entrada
+* @return $matriz[][]
+*/
 function preencheMatriz(array $entrada) {
+  if (count($entrada) != 2){
+    echo "Arquivo com uma ou mais entradas inválidas";
+    exit;
+  }
+
   $matriz_tamanho = (int)$entrada[0];
   $valores_vetor = explode(" ",$entrada[1]);
   $matriz = [];
